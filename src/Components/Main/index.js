@@ -14,7 +14,7 @@ function setClass(status) {
 export default class Main extends Component {
   state = {
     nextEventDate: "",
-    nextEventName: "Food charity Barcelona",
+    nextEventName: "Food Charity Barcelona",
     listHere: false,
     status: null,
     list: [
@@ -28,7 +28,7 @@ export default class Main extends Component {
 
   componentDidMount() {
     axios(
-      "https://food-society.herokuapp.com/api/instant-game/get-status/testgroup1/fakeid1/"
+      "https://food-society.herokuapp.com/api/instant-game/get-status"
     )
       .then(res => res.data)
       .then(res => {

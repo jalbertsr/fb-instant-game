@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./styles.css";
+import moment from "moment";
 
 class Summary extends React.Component {
   state = {
-    next_event_timestamp: "2018-07-08T00:00:00+00:00",
+    event_timestamp: "2018-07-08T00:00:00+00:00",
     products: []
   };
 
   componentDidMount() {
-    console.log(this.props.location.products);
+    this.setState({ products: this.props.location.products });
   }
 
   renderList = () => {
@@ -25,14 +26,19 @@ class Summary extends React.Component {
   };
 
   render() {
+    const { event_timestamp } = this.state;
     return (
       <div className={styles.container}>
         <div className={styles.header}>Summary</div>
-        <div className={styles.list_items}>{this.renderList()}</div>
+        <div className={styles.wrapper}>
+          <div className={styles.list_items}>{this.renderList()}</div>
+        </div>
         <div className={styles.footer}>
-          <span>Thanks for your help!</span>
-          <span>See you in {this.state.next_event_timestamp}!</span>
-          <button>Exit</button>
+          <h5 style={{ textAlign: "center" }}>Thanks for your help!</h5>
+          <h5 style={{ textAlign: "center" }}>
+            See you in {moment(event_timestamp).fromNow()} !
+          </h5>
+          <button style={{ backgroundColor: "white", textAlign: "center" }}>Exit</button>
         </div>
       </div>
     );
