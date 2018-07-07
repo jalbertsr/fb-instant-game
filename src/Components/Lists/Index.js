@@ -5,43 +5,29 @@ export default class UploadList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [
-        { food: "Sandwiches", need: 20, quantity: 0 },
-        { food: "Milk 🥛", need: 15, quantity: 0 },
-        { food: "Juice", need: 20, quantity: 0 },
-        { food: "Apples 🍎", need: 25, quantity: 0 },
-        { food: "Milk 🥛", need: 15, quantity: 0 },
-        { food: "Juice", need: 20, quantity: 0 },
-        { food: "Apples 🍎", need: 25, quantity: 0 }
-      ],
-      value: ""
-    };
+    "user_attendance": null,
+    "next_event_timestamp": "",
+    "products": []
   }
+}
 
-  add = () => {
-    this.setState(prevState => ({
-      list: [...prevState.list, this.state.value],
-      value: ""
-    }));
-  };
 
   handleSumbit = () => {
     // axios send post
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
   handleAdd = (title) => {
     this.setState((prevState) => {
       return {
-        list: prevState.list.map(item => {
-          if (item.food === title && (item.need - 1 >= 0)) {
+        list: prevState.products.map(item => {
+          const itemsNeeded = item.required_quantity - item.total_confirmed_quantity;
+          if (item.name === title && (itemsNeeded - 1 >= 0)) {
             return {
-              food: item.food,
-              need: item.need - 1,
-              quantity: item.quantity + 1
+              name: item.name,
+              total_confirmed_quantity: item.total_confirmed_quantity + 1,
+              user_confirmed_quantity: item.user_confirmed_quantity + 1,
+              required_quantity: item.required_quantity,
+              product_id: item.product_id,
             }
           }
           return item;
@@ -54,12 +40,15 @@ export default class UploadList extends React.Component {
   handleRemove = (title) => {
     this.setState((prevState) => {
       return {
-        list: prevState.list.map(item => {
-          if (item.food === title && (item.quantity - 1 >= 0)) {
+        list: prevState.products.map(item => {
+          const itemsNeeded = item.required_quantity - item.total_confirmed_quantity;
+          if (item.name === title && (item.user_confirmed_quantity - 1 >= 0)) {
             return {
-              food: item.food,
-              need: item.need + 1,
-              quantity: item.quantity - 1
+              name: item.name,
+              product_id: item.product_id,
+              total_confirmed_quantity: item.total_confirmed_quantity - 1,
+              user_confirmed_quantity: item.user_confirmed_quantity - 1,
+              required_quantity: item.required_quantity
             }
           }
           return item;
@@ -67,38 +56,51 @@ export default class UploadList extends React.Component {
 
       }
     })
+    console.log(this.state);
   }
 
   renderFoodList = () => {
-    const food = this.state.list.map((item, i) => (
+    const food = this.state.products.map((item, i) => (
       <div key={i} className={styles.list_item}>
         <div className={styles.list_item_left}>
           <div className={styles.food}>
-            {item.food}
+            {item.name}
           </div>
           <div className={styles.quantity_container}>
             <button
               className={styles.change_quantity}
-              onClick={() => this.handleAdd(item.food)}
+              onClick={() => this.handleAdd(item.name)}
             >
               ➕
             </button>
             <div className={styles.quantity}>
-              {item.quantity}
+              {item.user_confirmed_quantity}
             </div>
             <button className={styles.change_quantity}
-              onClick={() => this.handleRemove(item.food)}
+              onClick={() => this.handleRemove(item.name)}
             >
               ➖
             </button>
           </div>
         </div>
         <div className={styles.list_item_right}>
-          {item.need}
+          {item.required_quantity - item.total_confirmed_quantity}
         </div>
       </div>
     ))
     return food;
+  }
+
+  componentDidMount () {
+    fetch('https://food-society.herokuapp.com/api/instant-game/get-status/testgroup1/fakeid1/')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          "user_attendance": res.user_attendance,
+          "next_event_timestamp": res.next_event_timestamp,
+          "products": res.products
+        })
+      })
   }
 
   render() {
