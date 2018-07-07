@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import styles from "./styles.css";
 
-export default class UploadList extends React.Component {
+class UploadList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +15,11 @@ export default class UploadList extends React.Component {
 
   handleSumbit = () => {
     // axios send post
-  }
+    this.props.history.push({
+      pathname: '/summary',
+      products: { list: this.state.list }
+    })
+  };
 
   handleAdd = (title) => {
     this.setState((prevState) => {
@@ -32,13 +37,12 @@ export default class UploadList extends React.Component {
           }
           return item;
         })
+      };
+    });
+  };
 
-      }
-    })
-  }
-
-  handleRemove = (title) => {
-    this.setState((prevState) => {
+  handleRemove = title => {
+    this.setState(prevState => {
       return {
         list: prevState.products.map(item => {
           const itemsNeeded = item.required_quantity - item.total_confirmed_quantity;
@@ -87,9 +91,9 @@ export default class UploadList extends React.Component {
           {item.required_quantity - item.total_confirmed_quantity}
         </div>
       </div>
-    ))
+    ));
     return food;
-  }
+  };
 
   componentDidMount () {
     fetch('https://food-society.herokuapp.com/api/instant-game/get-status/testgroup1/fakeid1/')
@@ -106,20 +110,16 @@ export default class UploadList extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <h2 style={{'alignSelf':'center'}}>Food List</h2>
+        <h2 style={{ alignSelf: "center" }}>Food List</h2>
         <div className={styles.header}>
-          <div>
-            I can bring
-          </div>
-          <div>
-            Items required
-          </div>
+          <div>I can bring</div>
+          <div>Items required</div>
         </div>
-        <div className={styles.food_list}>
-          {this.renderFoodList()}
-        </div>
+        <div className={styles.food_list}>{this.renderFoodList()}</div>
         <button onClick={this.handleSumbit}>Confirm</button>
       </div>
     );
   }
 }
+
+export default withRouter(UploadList);

@@ -9,11 +9,13 @@
   "scripts": {
     "start": "webpack-dev-server --progress --hot --inline --colors --watch",
     "create": "webpack --config webpack.config.js",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "upload": "chmod +x ./upload.sh"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",

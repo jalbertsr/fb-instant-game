@@ -12,6 +12,16 @@
   justify-content: flex-start; */
 }
 
+.greenBorder {
+  border-color: green;
+  background-color: lightgreen;
+}
+
+.redBorder {
+  border-color: red;
+  background-color: lightpink;
+}
+
 .container_card {
   display: flex;
   flex-direction: column;
