@@ -37,14 +37,6 @@ export default class Main extends Component {
     return events;
   }
 
-  handleAttendButton = () => {
-
-  }
-
-  handleQuestionButton = () => {
-
-  }
-
   handleRejectButton = () => {
 
   }
@@ -70,7 +62,6 @@ export default class Main extends Component {
             <button
               className='button-primary'
               style={{'fontSize': '1.05em'}}
-              onClick={() => this.handleAttendButton()}
               >
                 Attend
               </button>

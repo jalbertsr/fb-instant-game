@@ -105,6 +105,14 @@ export default class UploadList extends React.Component {
     return (
       <div className={styles.wrapper}>
         <h2 style={{'alignSelf':'center'}}>Food List</h2>
+        <div className={styles.header}>
+          <div>
+            I can bring
+          </div>
+          <div>
+            Items required
+          </div>
+        </div>
         <div className={styles.food_list}>
           {this.renderFoodList()}
         </div>

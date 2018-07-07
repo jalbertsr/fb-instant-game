@@ -58,6 +58,12 @@
   overflow: scroll;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1vh 4vw;
+}
+
 @media (min-width: 400px) {
   .quantity {
     width: 26vw;
