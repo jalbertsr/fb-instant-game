@@ -130,11 +130,7 @@ class UploadList extends React.Component {
 
   componentDidMount() {
     fetch(
-<<<<<<< HEAD
       "https://food-society.herokuapp.com/api/instant-game/get-status/"
-=======
-      "https://food-society.herokuapp.com/api/instant-game/get-status"
->>>>>>> 7dbb98ac1cf7a7e1b173beb67c512db857079de9
     )
       .then(res => res.json())
       .then(res => {
