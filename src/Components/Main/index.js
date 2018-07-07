@@ -27,9 +27,7 @@ export default class Main extends Component {
   };
 
   componentDidMount() {
-    axios(
-      "https://food-society.herokuapp.com/api/instant-game/get-status"
-    )
+    axios("https://food-society.herokuapp.com/api/instant-game/get-status")
       .then(res => res.data)
       .then(res => {
         this.setState({

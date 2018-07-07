@@ -15,33 +15,35 @@ class UploadList extends React.Component {
       return {
         product_id: item.product_id,
         quantity: item.user_confirmed_quantity
-      }
-    })
+      };
+    });
 
     const listItems = this.state.products.map(item => {
       return {
         product_id: item.product_id,
         name: item.name,
         quantity: item.user_confirmed_quantity
-      }
-    })
+      };
+    });
 
     const data = {
       products,
-      'user_attendance': true
-    }
+      user_attendance: true
+    };
 
-    fetch('https://food-society.herokuapp.com/api/instant-game/update-status/',
+    fetch(
+      "https://food-society.herokuapp.com/api/instant-game/set-status/",
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json; charset=utf-8',
+          "Content-Type": "application/json; charset=utf-8"
         },
         body: JSON.stringify(data)
-      })
+      }
+    )
       .then(res => res.json())
       .then(res => {
-        if (res.status === 'ok') {
+        if (res.status === "ok") {
           this.props.history.push({
             pathname: "/summary",
             state: {
@@ -81,7 +83,7 @@ class UploadList extends React.Component {
         products: prevState.products.map(item => {
           const itemsNeeded =
             item.required_quantity - item.total_confirmed_quantity;
-          console.log(item.user_confirmed_quantity - 1 >= 0)
+          console.log(item.user_confirmed_quantity - 1 >= 0);
           if (item.name === title && item.user_confirmed_quantity - 1 >= 0) {
             return {
               name: item.name,
@@ -129,12 +131,13 @@ class UploadList extends React.Component {
   };
 
   componentDidMount() {
-    fetch(
-      "https://food-society.herokuapp.com/api/instant-game/get-status/"
-    )
+    fetch("https://food-society.herokuapp.com/api/instant-game/get-status/")
       .then(res => res.json())
       .then(res => {
-        this.setState({ products: res.products, time: res.next_event_timestamp });
+        this.setState({
+          products: res.products,
+          time: res.next_event_timestamp
+        });
       });
   }
 
@@ -147,7 +150,12 @@ class UploadList extends React.Component {
           <div>Items required</div>
         </div>
         <div className={styles.food_list}>{this.renderFoodList()}</div>
-        <button onClick={this.handleSumbit} style={{ backgroundColor: "white" }}>Confirm</button>
+        <button
+          onClick={this.handleSumbit}
+          style={{ backgroundColor: "white" }}
+        >
+          Confirm
+        </button>
       </div>
     );
   }
