@@ -2,10 +2,13 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  margin-top: 2vh;
   text-overflow: ellipsis;
+  justify-content: center;
+
+  /* list
+  margin-top: 2vh;
+  justify-content: flex-start; */
 }
 
 .container_card {
@@ -15,7 +18,14 @@
   align-items: center;
   height: 30vh;
   justify-content: space-evenly;
+  border: solid darkgray;
+
+  /* no-list */
+  background-color: white;
+  border-radius: 1vh;
+  box-shadow: 1px 1px 14px 1px lightgrey;
 }
+
 .card_time {
   display: flex;
   justify-content: space-around;

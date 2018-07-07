@@ -9,6 +9,7 @@ export default class Main extends Component {
     nextEventDate: 'July 7th',
     nextEventTime: '12:00',
     nextEventName: 'Food charity Barcelona',
+    listHere: false,
     list: [
       {
         title: 'food charity August',
@@ -75,32 +76,27 @@ export default class Main extends Component {
             <button
               className='button-primary'
               style={{'fontSize': '1.75em', 'padding': '0 10px'}}
-              onClick={() => this.handleQuestionButton()}
-            >
-              ❓
-            </button>
-            <button
-              className='button-primary'
-              style={{'fontSize': '1.75em', 'padding': '0 10px'}}
               onClick={() => this.handleRejectButton()}
             >
               🙅
             </button>
           </div>
         </div>
-        <div className={styles.container_list}>
-          <table className='u-full-width' style={{'width': '86vw'}}>
-            <thead>
-              <tr>
-                <th>Event</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderList()}
-          </tbody>
-          </table>
-        </div>
+        {this.state.listHere && (
+          <div className={styles.container_list}>
+            <table className='u-full-width' style={{'width': '86vw'}}>
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.renderList()}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     )
   }
