@@ -4,15 +4,14 @@ import moment from "moment";
 
 class Summary extends React.Component {
   state = {
-    event_timestamp: "2018-07-08T00:00:00+00:00",
+    time: "",
     products: []
   };
 
   componentDidMount() {
-    const { products, } = this.props.location.state;
-    this.setState({
-      products: this.props.location.products
-    });
+    const { products, time } = this.props.location.state;
+    console.log(products, time)
+    this.setState({ products, time });
   }
 
   renderList = () => {
@@ -21,7 +20,7 @@ class Summary extends React.Component {
       return (
         <div className={styles.list_item} key={item.product_id}>
           <div className={styles.title}>{item.name}</div>
-          <div className={styles.quantity}>{item.user_confirmed_quantity}</div>
+          <div className={styles.quantity}>{item.quantity}</div>
         </div>
       );
     });
@@ -29,7 +28,7 @@ class Summary extends React.Component {
   };
 
   render() {
-    const { event_timestamp } = this.state;
+    const { time } = this.state;
     return (
       <div className={styles.container}>
         <div className={styles.header}>Summary</div>
@@ -39,7 +38,7 @@ class Summary extends React.Component {
         <div className={styles.footer}>
           <h5 style={{ textAlign: "center" }}>Thanks for your help!</h5>
           <h5 style={{ textAlign: "center" }}>
-            See you in {moment(event_timestamp).fromNow()} !
+            See you in {moment(time).fromNow()} !
           </h5>
           <div>
             <button
