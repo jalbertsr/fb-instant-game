@@ -66,19 +66,21 @@ export default class Main extends Component {
             </div>
           </div>
           <div className={styles.buttons}>
+            <Link to='/lists'>
             <button
               className='button-primary'
               style={{'fontSize': '1.05em'}}
               onClick={() => this.handleAttendButton()}
-            >
-              Attend
-            </button>
+              >
+                Attend
+              </button>
+            </Link>
             <button
               className='button-primary'
               style={{'fontSize': '1.75em', 'padding': '0 10px'}}
               onClick={() => this.handleRejectButton()}
             >
-              🙅
+              🙅🏻
             </button>
           </div>
         </div>

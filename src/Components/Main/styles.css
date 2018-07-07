@@ -5,6 +5,7 @@
   align-items: center;
   text-overflow: ellipsis;
   justify-content: center;
+  background-color: #D9F4F3;
 
   /* list
   margin-top: 2vh;
@@ -18,7 +19,9 @@
   align-items: center;
   height: 30vh;
   justify-content: space-evenly;
-  border: solid darkgray;
+  background: linear-gradient(110deg, white 60%, #FFDF2B 60%);
+  box-shadow: -1vh 1vh 6vh -2vh black;
+  border-radius: 2%;
 
   /* no-list */
   background-color: white;
