@@ -1,0 +1,39 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2vh;
+  text-overflow: ellipsis;
+}
+
+.container_card {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  align-items: center;
+  height: 30vh;
+  justify-content: space-evenly;
+}
+.card_time {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.3em;
+  width: 50vw;
+}
+
+.buttons {
+  display: flex;
+  width: inherit;
+  justify-content: space-evenly;
+}
+
+@media (min-width: 400px) {
+  .card_time {
+    width: 20vw;
+  }
+  .buttons {
+    width: 30vw
+  }
+}
