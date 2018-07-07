@@ -31,8 +31,10 @@ class UploadList extends React.Component {
       user_attendance: true
     };
 
+    const { group_id, user_id } = this.props.history.location.userData;
+
     fetch(
-      "https://food-society.herokuapp.com/api/instant-game/set-status/",
+      `https://food-society.herokuapp.com/api/instant-game/set-status/${group_id}/${user_id}/`,
       {
         method: "POST",
         headers: {
@@ -83,7 +85,6 @@ class UploadList extends React.Component {
         products: prevState.products.map(item => {
           const itemsNeeded =
             item.required_quantity - item.total_confirmed_quantity;
-          console.log(item.user_confirmed_quantity - 1 >= 0);
           if (item.name === title && item.user_confirmed_quantity - 1 >= 0) {
             return {
               name: item.name,
@@ -131,7 +132,10 @@ class UploadList extends React.Component {
   };
 
   componentDidMount() {
-    fetch("https://food-society.herokuapp.com/api/instant-game/get-status/")
+    const { group_id, user_id } = this.props.history.location.userData;
+    fetch(
+      `https://food-society.herokuapp.com/api/instant-game/get-status/${group_id}/${user_id}/`
+    )
       .then(res => res.json())
       .then(res => {
         this.setState({

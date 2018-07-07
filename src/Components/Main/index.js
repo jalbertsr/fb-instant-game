@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import styles from "./styles.css";
 import axios from "axios";
 import moment from "moment";
@@ -11,30 +11,46 @@ function setClass(status) {
   return status ? styles.greenBorder : styles.redBorder;
 }
 
-export default class Main extends Component {
-  state = {
-    nextEventDate: "",
-    nextEventName: "Food Charity Barcelona",
-    listHere: false,
-    status: null,
-    list: [
-      {
-        title: "Food charity August",
-        date: "August 10th",
-        id: 1
-      }
-    ]
-  };
+class Main extends Component {
+  constructor() {
+    super();
+    this.state = {
+      nextEventDate: "",
+      nextEventName: "Food Charity Barcelona",
+      listHere: false,
+      status: null,
+      list: [
+        {
+          title: "Food charity August",
+          date: "August 10th",
+          id: 1
+        }
+      ]
+    };
+    this.userData = {};
+  }
 
   componentDidMount() {
-    axios("https://food-society.herokuapp.com/api/instant-game/get-status")
-      .then(res => res.data)
-      .then(res => {
-        this.setState({
-          nextEventDate: res.next_event_timestamp,
-          status: res.user_attendance
+    setTimeout(() => {
+      axios("https://food-society.herokuapp.com/api/instant-game/get-cache")
+        .then(res => res.data)
+        .then(res => {
+          
+          const { group_id, user_id } = res;
+          this.userData = { group_id, user_id };
+
+          axios(
+            `https://food-society.herokuapp.com/api/instant-game/get-status/${group_id}/${user_id}/`
+          )
+            .then(res => res.data)
+            .then(res => {
+              this.setState({
+                nextEventDate: res.next_event_timestamp,
+                status: res.user_attendance
+              });
+            });
         });
-      });
+    }, 1500);
   }
 
   renderList = () => {
@@ -63,16 +79,20 @@ export default class Main extends Component {
             <div>{moment(nextEventDate).format("hA")}</div>
           </div>
           <div className={styles.buttons}>
-            <Link to="/lists">
-              <button
-                className={
-                  status === true ? `button-primary ${styles.greenBorder}` : ""
-                }
-                style={{ fontSize: "1.05em" }}
-              >
-                {status ? "Confirmed" : "Attend"}
-              </button>
-            </Link>
+            <button
+              className={
+                status === true ? `button-primary ${styles.greenBorder}` : ""
+              }
+              style={{ fontSize: "1.05em" }}
+              onClick={() =>
+                this.props.history.push({
+                  pathname: "/lists",
+                  userData: this.userData
+                })
+              }
+            >
+              {status ? "Confirmed" : "Attend"}
+            </button>
             <button
               className={
                 status === false ? `button-primary ${styles.redBorder}` : ""
@@ -101,3 +121,5 @@ export default class Main extends Component {
     );
   }
 }
+
+export default withRouter(Main);
