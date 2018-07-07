@@ -6,34 +6,32 @@ class UploadList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    "user_attendance": null,
-    "next_event_timestamp": "",
-    "products": []
+      products: []
+    };
   }
-}
-
 
   handleSumbit = () => {
     // axios send post
     this.props.history.push({
-      pathname: '/summary',
-      products: { list: this.state.list }
-    })
+      pathname: "/summary",
+      products: this.state.products
+    });
   };
 
-  handleAdd = (title) => {
-    this.setState((prevState) => {
+  handleAdd = title => {
+    this.setState(prevState => {
       return {
-        list: prevState.products.map(item => {
-          const itemsNeeded = item.required_quantity - item.total_confirmed_quantity;
-          if (item.name === title && (itemsNeeded - 1 >= 0)) {
+        products: prevState.products.map(item => {
+          const itemsNeeded =
+            item.required_quantity - item.total_confirmed_quantity;
+          if (item.name === title && itemsNeeded - 1 >= 0) {
             return {
               name: item.name,
               total_confirmed_quantity: item.total_confirmed_quantity + 1,
               user_confirmed_quantity: item.user_confirmed_quantity + 1,
               required_quantity: item.required_quantity,
-              product_id: item.product_id,
-            }
+              product_id: item.product_id
+            };
           }
           return item;
         })
@@ -44,32 +42,30 @@ class UploadList extends React.Component {
   handleRemove = title => {
     this.setState(prevState => {
       return {
-        list: prevState.products.map(item => {
-          const itemsNeeded = item.required_quantity - item.total_confirmed_quantity;
-          if (item.name === title && (item.user_confirmed_quantity - 1 >= 0)) {
+        products: prevState.products.map(item => {
+          const itemsNeeded =
+            item.required_quantity - item.total_confirmed_quantity;
+          console.log(item.user_confirmed_quantity - 1 >= 0)
+          if (item.name === title && item.user_confirmed_quantity - 1 >= 0) {
             return {
               name: item.name,
               product_id: item.product_id,
               total_confirmed_quantity: item.total_confirmed_quantity - 1,
               user_confirmed_quantity: item.user_confirmed_quantity - 1,
               required_quantity: item.required_quantity
-            }
+            };
           }
           return item;
         })
-
-      }
-    })
-    console.log(this.state);
-  }
+      };
+    });
+  };
 
   renderFoodList = () => {
     const food = this.state.products.map((item, i) => (
       <div key={i} className={styles.list_item}>
         <div className={styles.list_item_left}>
-          <div className={styles.food}>
-            {item.name}
-          </div>
+          <div className={styles.food}>{item.name}</div>
           <div className={styles.quantity_container}>
             <button
               className={styles.change_quantity}
@@ -80,7 +76,8 @@ class UploadList extends React.Component {
             <div className={styles.quantity}>
               {item.user_confirmed_quantity}
             </div>
-            <button className={styles.change_quantity}
+            <button
+              className={styles.change_quantity}
               onClick={() => this.handleRemove(item.name)}
             >
               ➖
@@ -95,16 +92,14 @@ class UploadList extends React.Component {
     return food;
   };
 
-  componentDidMount () {
-    fetch('https://food-society.herokuapp.com/api/instant-game/get-status/testgroup1/fakeid1/')
+  componentDidMount() {
+    fetch(
+      "https://food-society.herokuapp.com/api/instant-game/get-status/testgroup1/fakeid1/"
+    )
       .then(res => res.json())
       .then(res => {
-        this.setState({
-          "user_attendance": res.user_attendance,
-          "next_event_timestamp": res.next_event_timestamp,
-          "products": res.products
-        })
-      })
+        this.setState({ products: res.products });
+      });
   }
 
   render() {
