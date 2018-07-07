@@ -1,0 +1,37 @@
+{
+  "name": "webpack-react-babel-v2",
+  "version": "1.0.0",
+  "description": "webpack react configuration",
+  "main": "index.js",
+  "repository": "https://github.com/jalbertsr/webpack-v2-config-react-boilerplate.git",
+  "author": "Joan Albert Segura <jalbertsr@protonmail.ch>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --progress --hot --inline --colors --watch",
+    "create": "webpack --config webpack.config.js",
+    "build": "webpack -p"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.8.1"
+  },
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1"
+  }
+}
