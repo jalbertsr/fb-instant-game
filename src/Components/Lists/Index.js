@@ -94,7 +94,7 @@ class UploadList extends React.Component {
 
   componentDidMount() {
     fetch(
-      "https://food-society.herokuapp.com/api/instant-game/get-status/testgroup1/fakeid1/"
+      "https://food-society.herokuapp.com/api/instant-game/get-status"
     )
       .then(res => res.json())
       .then(res => {
@@ -111,7 +111,7 @@ class UploadList extends React.Component {
           <div>Items required</div>
         </div>
         <div className={styles.food_list}>{this.renderFoodList()}</div>
-        <button onClick={this.handleSumbit}>Confirm</button>
+        <button onClick={this.handleSumbit} style={{ backgroundColor: "white" }}>Confirm</button>
       </div>
     );
   }
