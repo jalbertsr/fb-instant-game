@@ -9,7 +9,10 @@ class Summary extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ products: this.props.location.products });
+    const { products, } = this.props.location.state;
+    this.setState({
+      products: this.props.location.products
+    });
   }
 
   renderList = () => {
@@ -38,7 +41,17 @@ class Summary extends React.Component {
           <h5 style={{ textAlign: "center" }}>
             See you in {moment(event_timestamp).fromNow()} !
           </h5>
-          <button style={{ backgroundColor: "white", textAlign: "center" }}>Exit</button>
+          <div>
+            <button
+              style={{
+                backgroundColor: "white",
+                margin: "0 auto",
+                display: "block"
+              }}
+            >
+              Exit
+            </button>
+          </div>
         </div>
       </div>
     );
