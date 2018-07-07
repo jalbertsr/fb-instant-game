@@ -11,11 +11,47 @@ class UploadList extends React.Component {
   }
 
   handleSumbit = () => {
-    // axios send post
-    this.props.history.push({
-      pathname: "/summary",
-      products: this.state.products
-    });
+    const products = this.state.products.map(item => {
+      return {
+        product_id: item.product_id,
+        quantity: item.user_confirmed_quantity
+      }
+    })
+
+    const listItems = this.state.products.map(item => {
+      return {
+        product_id: item.product_id,
+        name: item.name,
+        quantity: item.user_confirmed_quantity
+      }
+    })
+
+    const data = {
+      products,
+      'user_attendance': true
+    }
+
+    fetch('https://food-society.herokuapp.com/api/instant-game/update-status/',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(res => {
+        if (res.status === 'ok') {
+          this.props.history.push({
+            pathname: "/summary",
+            state: {
+              products: listItems,
+              time: this.state.time
+            }
+          });
+        }
+      })
+      .catch(error => console.error(`Fetch Error =\n`, error));
   };
 
   handleAdd = title => {
@@ -98,7 +134,7 @@ class UploadList extends React.Component {
     )
       .then(res => res.json())
       .then(res => {
-        this.setState({ products: res.products });
+        this.setState({ products: res.products, time: res.next_event_timestamp });
       });
   }
 
