@@ -2,15 +2,64 @@
   text-align: center;
 }
 .input {
-  margin-right: 15px;
-  width: 50px;
-  float: right;
+  text-align: center;
+  width: 14vw;
 }
 
 .wrapper {
-  padding: 30px 40px 40px 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 2vh 3vw 0 3vw;
+  background-color: #D9F4F3;
+}
+
+.quantity {
+  font-size: 1.5em;
+  width: 47vw;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .food {
-  display: inline-block;
+  font-size: 1.5em;
+}
+
+.list_item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1vh 0;
+  margin-bottom: 0.5vh;
+  background-color: white;
+  border-radius: 1vh;
+}
+
+.list_item_left {
+  display: flex;
+  flex-direction: column;
+}
+
+.list_item_right {
+  font-size: 2.7em;
+}
+
+.change_quantity {
+  height: 2em;
+  padding: 0 0.5em;
+  border-radius: 1vh;
+  font-size: 1em;
+}
+
+.food_list {
+  height: 80vh;
+  overflow: scroll;
+}
+
+@media (min-width: 400px) {
+  .quantity {
+    width: 26vw;
+  }
 }
