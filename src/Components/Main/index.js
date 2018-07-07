@@ -27,7 +27,7 @@ export default class Main extends Component {
   };
 
   componentDidMount() {
-    axios("https://food-society.herokuapp.com/api/instant-game/get-status")
+    axios("https://food-society.herokuapp.com/api/instant-game/get-status/testgroup1/fakeid1/")
       .then(res => res.data)
       .then(res => {
         this.setState({
@@ -56,6 +56,9 @@ export default class Main extends Component {
     const { nextEventDate, nextEventName, status } = this.state;
     return (
       <div className={styles.container}>
+        <div className={styles.app_name}>
+          Food society
+        </div>
         <div className={styles.container_card}>
           <div style={{ fontSize: "1.8em" }}>{nextEventName}</div>
           <div className={styles.card_time}>
@@ -70,17 +73,17 @@ export default class Main extends Component {
                 }
                 style={{ fontSize: "1.05em" }}
               >
-                {status ? "Confirmed" : "Attend"}
+                {status ? "Confirmed👏" : "Attend👍"}
               </button>
             </Link>
             <button
               className={
                 status === false ? `button-primary ${styles.redBorder}` : ""
               }
-              style={{ fontSize: "1.05em", padding: "0 10px" }}
+              style={{ fontSize: "1.05em", padding: "0 10px", "background": "rgba(255,255,255, 0.7)"}}
               onClick={() => this.handleRejectButton()}
             >
-              {status === false ? "Not going" : "Not Attend"}
+              {status === false ? "Not going" : "I'll pass🙅"}
             </button>
           </div>
         </div>

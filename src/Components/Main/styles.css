@@ -4,8 +4,9 @@
   flex-direction: column;
   align-items: center;
   text-overflow: ellipsis;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: #D9F4F3;
+  margin-top: -14vh;
 
   /* list
   margin-top: 2vh;
@@ -14,24 +15,23 @@
 
 .greenBorder {
   border-color: green;
-  background-color: lightgreen;
+  background-color: rgba(96, 207, 46, 0.3);
 }
 
 .redBorder {
   border-color: red;
-  background-color: lightpink;
+  border-width: 2px;
 }
 
 .container_card {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 100vw;
   align-items: center;
   height: 30vh;
   justify-content: space-evenly;
-  background: linear-gradient(110deg, white 60%, #FFDF2B 60%);
+  background: linear-gradient(110deg, white 60%, #00CFD8 60%);
   box-shadow: -1vh 1vh 6vh -2vh black;
-  border-radius: 2%;
 
   /* no-list */
   background-color: white;
@@ -50,6 +50,11 @@
   display: flex;
   width: inherit;
   justify-content: space-evenly;
+}
+
+.app_name {
+  font-family: 'Josefin Slab', serif;
+  font-size: 3.7em;
 }
 
 @media (min-width: 400px) {
