@@ -1,0 +1,12 @@
+{
+  "instant_games": {
+    "custom_update_templates": {
+      "pass_score": {
+        "example": "Dimitri just confirmed hes's comming to the event!"
+      },
+      "play_turn": {
+        "example": "Now is your turn to confirm!"
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js START
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js axios
 
 PATH: 
   /usr/local/bin:/Users/jalbert/.cargo/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/jalbert/.rvm/bin
@@ -25,11 +25,13 @@ npm manifest:
     "scripts": {
       "start": "webpack-dev-server --progress --hot --inline --colors --watch",
       "create": "webpack --config webpack.config.js",
-      "build": "webpack -p"
+      "build": "webpack -p",
+      "upload": "chmod +x ./upload.sh"
     },
     "devDependencies": {
       "babel-core": "^6.26.3",
       "babel-loader": "^7.1.5",
+      "babel-plugin-transform-async-to-generator": "^6.24.1",
       "babel-plugin-transform-class-properties": "^6.24.1",
       "babel-polyfill": "^6.26.0",
       "babel-preset-env": "^1.7.0",
@@ -256,6 +258,13 @@ Lockfile:
   atob@^2.1.1:
     version "2.1.1"
     resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
+  
+  axios@^0.18.0:
+    version "0.18.0"
+    resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+    dependencies:
+      follow-redirects "^1.3.0"
+      is-buffer "^1.1.5"
   
   babel-code-frame@^6.26.0:
     version "6.26.0"
@@ -2078,7 +2087,7 @@ Lockfile:
     dependencies:
       locate-path "^2.0.0"
   
-  follow-redirects@^1.0.0:
+  follow-redirects@^1.0.0, follow-redirects@^1.3.0:
     version "1.5.1"
     resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.1.tgz#67a8f14f5a1f67f962c2c46469c79eaec0a90291"
     dependencies:
@@ -4877,7 +4886,7 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: Command "START" not found.
+  Error: Command "axios" not found.
       at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
       at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:87307:17
       at Generator.next (<anonymous>)

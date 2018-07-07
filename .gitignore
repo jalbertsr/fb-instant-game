@@ -1,2 +1,5 @@
 node_modules
 config.template.json
+.env
+upload.sh
+yarn-error.log
