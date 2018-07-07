@@ -8,30 +8,42 @@
 //   FBInstant.setLoadingProgress(progress);
 // }
 
-// Once all assets are loaded, tells the SDK 
+// Once all assets are loaded, tells the SDK
 // to end loading view and start the game
 window.onload = function () {
-  FBInstant.initializeAsync()
-    .then(function () {
-      // Start loading game assets here
-      console.log("Loading...")
-    });
-  FBInstant.startGameAsync()
-    .then(function () {
-      // Retrieving context and player information can only be done
-      // once startGameAsync() resolves
-      var contextId = FBInstant.context.getID();
-      var contextType = FBInstant.context.getType();
+  FBInstant.initializeAsync().then(function () {
+    // Start loading game assets here
+    console.log("Loading...");
+  });
 
-      var playerName = FBInstant.player.getName();
-      var playerPic = FBInstant.player.getPhoto();
-      var playerId = FBInstant.player.getID();
+  // Once startGameAsync() resolves it also means the loading view has
+  // been removed and the user can see the game viewport
 
-      
+  FBInstant.startGameAsync().then(function () {
+    // Retrieving context and player information can only be done
+    // once startGameAsync() resolves
+    console.log("uuuuuuuuuu")
+    var contextId = FBInstant.context.getID();
+    var contextType = FBInstant.context.getType();
 
-      // Once startGameAsync() resolves it also means the loading view has 
-      // been removed and the user can see the game viewport
+    var playerName = FBInstant.player.getName();
+    var playerPic = FBInstant.player.getPhoto();
+    var playerId = FBInstant.player.getID();
 
-      game.start();
-    });
-}
+    console.log("contextId", contextId);
+    console.log("contextType", contextType);
+    console.log("playerId", playerId);
+
+    window.gameData = {
+      contextId: contextId,
+      contextType: contextType,
+      playerName: playerName,
+      playerPic: playerPic,
+      playerId: playerId
+    };
+    // Once startGameAsync() resolves it also means the loading view has
+    // been removed and the user can see the game viewport
+
+    game.start();
+  });
+};

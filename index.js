@@ -15,9 +15,14 @@ window.onload = function() {
     // Start loading game assets here
     console.log("Loading...");
   });
-  FBInstant.startGameAsync().then(function() {
+  
+    // Once startGameAsync() resolves it also means the loading view has
+    // been removed and the user can see the game viewport
+
+  FBInstant.startGameAsync().then(function () {
     // Retrieving context and player information can only be done
     // once startGameAsync() resolves
+    console.log("uuuuuuuuuu")
     var contextId = FBInstant.context.getID();
     var contextType = FBInstant.context.getType();
 

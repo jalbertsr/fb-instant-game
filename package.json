@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "webpack react configuration",
   "main": "index.js",
-  "repository": "https://github.com/jalbertsr/webpack-v2-config-react-boilerplate.git",
+  "repository": "https://github.com/jalbertsr/fb-instant-game.git",
   "author": "Joan Albert Segura <jalbertsr@protonmail.ch>",
   "license": "MIT",
   "scripts": {
@@ -30,6 +30,8 @@
     "webpack-dev-server": "^2.8.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "moment": "^2.22.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1"

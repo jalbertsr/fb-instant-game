@@ -3,5 +3,14 @@
 }
 .input {
   margin-right: 15px;
+  width: 50px;
+  float: right;
+}
+
+.wrapper {
+  padding: 30px 40px 40px 30px;
+}
+
+.food {
   display: inline-block;
 }
