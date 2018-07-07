@@ -11,10 +11,9 @@
   flex-direction: column;
   height: 100vh;
   padding: 2vh 3vw 0 3vw;
-  background-color: #D9F4F3;
 }
 
-.quantity {
+.quantity_container {
   font-size: 1.5em;
   width: 47vw;
   color: black;
@@ -32,9 +31,10 @@
   justify-content: space-around;
   align-items: center;
   padding: 1vh 0;
-  margin-bottom: 0.5vh;
+  margin-bottom: 2.5vh;
   background-color: white;
   border-radius: 1vh;
+  border: solid 1px darkgray;
 }
 
 .list_item_left {

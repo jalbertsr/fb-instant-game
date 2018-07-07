@@ -33,6 +33,42 @@ export default class UploadList extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleAdd = (title) => {
+    this.setState((prevState) => {
+      return {
+        list: prevState.list.map(item => {
+          if (item.food === title && (item.need - 1 >= 0)) {
+            return {
+              food: item.food,
+              need: item.need - 1,
+              quantity: item.quantity + 1
+            }
+          }
+          return item;
+        })
+
+      }
+    })
+  }
+
+  handleRemove = (title) => {
+    this.setState((prevState) => {
+      return {
+        list: prevState.list.map(item => {
+          if (item.food === title && (item.quantity - 1 >= 0)) {
+            return {
+              food: item.food,
+              need: item.need + 1,
+              quantity: item.quantity - 1
+            }
+          }
+          return item;
+        })
+
+      }
+    })
+  }
+
   renderFoodList = () => {
     const food = this.state.list.map((item, i) => (
       <div key={i} className={styles.list_item}>
@@ -40,19 +76,19 @@ export default class UploadList extends React.Component {
           <div className={styles.food}>
             {item.food}
           </div>
-          <div className={styles.quantity}>
-            <button className={styles.change_quantity}>
+          <div className={styles.quantity_container}>
+            <button
+              className={styles.change_quantity}
+              onClick={() => this.handleAdd(item.food)}
+            >
               ➕
             </button>
-            <input
-              className={styles.input}
-              type="text"
-              placeholder={item.quantity}
-              name={item.quantity}
-              value={item.quantity}
-              onChange={this.handleChange}
-            />
-            <button className={styles.change_quantity}>
+            <div className={styles.quantity}>
+              {item.quantity}
+            </div>
+            <button className={styles.change_quantity}
+              onClick={() => this.handleRemove(item.food)}
+            >
               ➖
             </button>
           </div>
