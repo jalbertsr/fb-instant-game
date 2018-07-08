@@ -11,6 +11,7 @@
   flex-direction: column;
   height: 100vh;
   padding: 2vh 3vw 0 3vw;
+  background: linear-gradient(243deg, white 60%, #00CFD8 60%)
 }
 
 .quantity_container {
@@ -62,6 +63,14 @@
   display: flex;
   justify-content: space-between;
   margin: 1vh 4vw;
+}
+
+.button_confirm {
+  background-color: white;
+  margin-bottom: 3vh;
+  width: 36vw;
+  align-self: center;
+  font-size: 1em;
 }
 
 @media (min-width: 400px) {

@@ -32,7 +32,7 @@ class UploadList extends React.Component {
     };
 
     fetch(
-      "https://food-society.herokuapp.com/api/instant-game/set-status/",
+      "https://food-society.herokuapp.com/api/instant-game/update-status/",
       {
         method: "POST",
         headers: {
@@ -131,7 +131,7 @@ class UploadList extends React.Component {
   };
 
   componentDidMount() {
-    fetch("https://food-society.herokuapp.com/api/instant-game/get-status/")
+    fetch("https://food-society.herokuapp.com/api/instant-game/get-status/testgroup1/fakeid1/")
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -152,7 +152,7 @@ class UploadList extends React.Component {
         <div className={styles.food_list}>{this.renderFoodList()}</div>
         <button
           onClick={this.handleSumbit}
-          style={{ backgroundColor: "white" }}
+          className={styles.button_confirm}
         >
           Confirm
         </button>

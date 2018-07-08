@@ -54,7 +54,8 @@ module.exports = {
       fonts: [
         { family: "Play" },
         { family: "Lobster" },
-        { family: "Josefin Slab" }
+        { family: "Josefin Slab" },
+        { family: "Audiowide"}
       ]
     })
   ]
