@@ -61,7 +61,7 @@ class Summary extends React.Component {
         <div className={styles.footer}>
           <h5 style={{ textAlign: "center" }}>Thanks for your help!</h5>
           <h5 style={{ textAlign: "center" }}>
-            See you in {moment(time).fromNow()} !
+            See you {moment(time).fromNow()} !
           </h5>
           <div>
             <button

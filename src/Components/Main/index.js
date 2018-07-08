@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import styles from "./styles.css";
 import axios from "axios";
 import moment from "moment";
+import MainLoader from '../Loader';
 
 function setClass(status) {
   if (status === null) {
@@ -16,9 +17,9 @@ class Main extends Component {
     super();
     this.state = {
       nextEventDate: "",
-      nextEventName: "Food Charity Barcelona",
       listHere: false,
       status: null,
+      groupName: "",
       list: [
         {
           title: "Food charity August",
@@ -32,10 +33,9 @@ class Main extends Component {
 
   componentDidMount() {
     setTimeout(() => {
-      axios("https://food-society.herokuapp.com/api/instant-game/get-cache")
+      axios("https://food-society.herokuapp.com/api/instant-game/get-cache/")
         .then(res => res.data)
         .then(res => {
-          
           const { group_id, user_id } = res;
           this.userData = { group_id, user_id };
 
@@ -46,11 +46,12 @@ class Main extends Component {
             .then(res => {
               this.setState({
                 nextEventDate: res.next_event_timestamp,
-                status: res.user_attendance
+                status: res.user_attendance,
+                groupName: res.group_name
               });
             });
         });
-    }, 1500);
+    }, 1800);
   }
 
   renderList = () => {
@@ -75,33 +76,37 @@ class Main extends Component {
       user_attendance: false
     };
 
-    fetch(`https://food-society.herokuapp.com/api/instant-game/update-status/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(data)
-    })
+    fetch(
+      `https://food-society.herokuapp.com/api/instant-game/update-status/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(data)
+      }
+    )
       .then(res => res.json())
       .then(res => {
-        this.setState({ status: false })
+        this.setState({ status: false });
       })
       .catch(error => console.error(`Fetch Error =\n`, error));
   };
 
   render() {
-    const { nextEventDate, nextEventName, status } = this.state;
+    const { nextEventDate, status, groupName } = this.state;
     return (
       <div className={styles.container}>
-        <div className={styles.app_name}>
-          Food society
-        </div>
+        <div className={styles.app_name}>Food society</div>
         <div className={styles.container_card}>
-          <div style={{ fontSize: "1.8em" }}>{nextEventName}</div>
-          <div className={styles.card_time}>
-            <div>{moment(nextEventDate).format("MMMM Do")}</div>
-            <div>{moment(nextEventDate).format("hA")}</div>
-          </div>
+          {nextEventDate && groupName ?
+          <React.Fragment>
+            <div style={{ fontSize: "1.8em" }}>{groupName}</div>
+            <div className={styles.card_time}>
+              <div>{moment(nextEventDate).format("MMMM Do")}</div>
+              <div>{moment(nextEventDate).format("hA")}</div>
+            </div>
+          </React.Fragment> : <MainLoader/>}
           <div className={styles.buttons}>
             <button
               className={
@@ -121,7 +126,11 @@ class Main extends Component {
               className={
                 status === false ? `button-primary ${styles.redBorder}` : ""
               }
-              style={{ fontSize: "1.05em", padding: "0 10px", "background": "rgba(255,255,255, 0.7)"}}
+              style={{
+                fontSize: "1.05em",
+                padding: "0 10px",
+                background: "rgba(255,255,255, 0.7)"
+              }}
               onClick={() => this.handleRejectButton()}
             >
               {status === false ? "Not going" : "I'll pass🙅"}
