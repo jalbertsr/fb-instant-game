@@ -3,7 +3,7 @@
     "platform_version": "RICH_GAMEPLAY",
     "custom_update_templates": {
       "test_template": {
-        "example": "Now is your turn, confirm your assistance!"
+        "example": "X just invaded Y's village!"
       }
     }
   }
