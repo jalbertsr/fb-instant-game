@@ -62,12 +62,3 @@
   color: #545454;
   box-shadow: -5px 2px 18px -7px black
 }
-
-@media (min-width: 400px) {
-  .card_time {
-    width: 20vw;
-  }
-  .buttons {
-    width: 30vw
-  }
-}
