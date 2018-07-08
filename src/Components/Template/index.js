@@ -13,7 +13,7 @@ class Template extends React.Component {
       edit: true,
       question: 'how do you want to call it?'
     },
-    time: moment().format(),
+    time: moment().format('YYYY-MM-DDTHH:mm'),
     eventTime: {
       time: '',
       edit: false,
@@ -68,7 +68,7 @@ class Template extends React.Component {
                   }
                 })}
                 >
-                  ➡
+                  <i class="fas fa-arrow-right"></i>
                 </button>
               </div>
 
@@ -81,7 +81,7 @@ class Template extends React.Component {
           <TextField
             id="datetime-local"
             type="datetime-local"
-            defaultValue="2017-05-24T10:30"
+            defaultValue={this.state.time}
             onChange={this.handleChanges}
             name='time'
           />
@@ -104,7 +104,7 @@ class Template extends React.Component {
               }
             })}
             >
-              ⬅
+              <i class="fas fa-arrow-left"></i>
             </button>
           </div>
           <div className={styles.button_create}>
