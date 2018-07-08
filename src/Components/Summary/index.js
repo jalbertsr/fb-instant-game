@@ -10,7 +10,7 @@ class Summary extends React.Component {
 
   componentDidMount() {
     const { products, time } = this.props.location.state;
-    console.log(products, time)
+    console.log(products, time);
     this.setState({ products, time });
   }
 
@@ -25,6 +25,29 @@ class Summary extends React.Component {
       );
     });
     return list;
+  };
+
+  handleExit = () => {
+    const {
+      userData: { user_id, group_id }
+    } = this.props.location.state;
+    const data = {
+      user_id,
+      group_id,
+      exit_status: true
+    };
+    fetch(
+      `https://food-society.herokuapp.com/api/instant-game/set-exit-status/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(data)
+      }
+    )
+      .then(res => res.json())
+      .catch(error => console.error(`Fetch Error =\n`, error));
   };
 
   render() {
@@ -47,6 +70,7 @@ class Summary extends React.Component {
                 margin: "0 auto",
                 display: "block"
               }}
+              onClick={this.handleExit}
             >
               Exit
             </button>

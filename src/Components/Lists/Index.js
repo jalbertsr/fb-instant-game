@@ -35,13 +35,16 @@ class UploadList extends React.Component {
       user_attendance: true
     };
 
-    fetch(`https://food-society.herokuapp.com/api/instant-game/update-status/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(data)
-    })
+    fetch(
+      `https://food-society.herokuapp.com/api/instant-game/update-status/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(data)
+      }
+    )
       .then(res => res.json())
       .then(res => {
         if (res.status === "ok") {
@@ -49,7 +52,8 @@ class UploadList extends React.Component {
             pathname: "/summary",
             state: {
               products: listItems,
-              time: this.state.time
+              time: this.state.time,
+              userData: this.props.history.location.userData
             }
           });
         }
