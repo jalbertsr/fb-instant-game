@@ -36,7 +36,6 @@
 
   /* no-list */
   background-color: white;
-  border-radius: 1vh;
   box-shadow: 1px 1px 14px 1px lightgrey;
 }
 
@@ -44,13 +43,13 @@
   display: flex;
   justify-content: space-around;
   font-size: 1.3em;
-  width: 50vw;
+  width: 70vw;
 }
 
 .buttons {
   display: flex;
-  width: inherit;
   justify-content: space-evenly;
+  width: 80vw;
 }
 
 .app_name {
