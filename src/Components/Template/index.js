@@ -97,34 +97,38 @@ class Template extends React.Component {
             name='time'
           />
         </div>
-        <div className={styles.button}>
-          <button
-            onClick={() => this.setState((prevState) => {
-              return {
-                eventName: {
-                  name: '',
-                  placeholder: 'Create your food event',
-                  edit: true,
-                  question: 'How do you want to call it?'
-                },
-                eventTime: {
-                  time: '',
-                  edit: false,
-                  question: 'When is it happening?'
+        <div className={styles.footer}>
+          <div className={styles.button}>
+            <button
+              onClick={() => this.setState((prevState) => {
+                return {
+                  eventName: {
+                    name: '',
+                    placeholder: 'Create your food event',
+                    edit: true,
+                    question: 'How do you want to call it?'
+                  },
+                  eventTime: {
+                    time: '',
+                    edit: false,
+                    question: 'When is it happening?'
+                  }
                 }
-              }
-            })}
-            >
-              ⬅
-            </button>
-          </div>
-          <div>
-            <input type="checkbox" id="sth" name="public" value={this.state.public} onChange={this.handleChangesPublic}/>
-            <label for="sth">Public?</label>
-          </div>
-          <div className={styles.button_create}>
-            <button onClick={this.handleSubmit}>Create</button>
-          </div>
+              })}
+              >
+                ⬅
+              </button>
+            </div>
+            <div style={{'display': 'flex', 'marginRight': '-8vw'}}>
+              <div className={styles.button_create}>
+                <button onClick={this.handleSubmit}>Create</button>
+              </div>
+              <div className={styles.checkbox_input}>
+                <input type="checkbox" id="sth" name="public" value={this.state.public} onChange={this.handleChangesPublic}/>
+                <label for="sth">Public?</label>
+              </div>
+            </div>
+        </div>
         </div>
       );
     }
