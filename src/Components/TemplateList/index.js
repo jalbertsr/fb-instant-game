@@ -56,6 +56,11 @@ class TemplateList extends React.Component {
         event_date: time,
         products: this.state.list
       };
+      const exitData = {
+        user_id: userData.user_id,
+        group_id: userData.group_id,
+        exit_status: true
+      };
       fetch(
         "https://food-society.herokuapp.com/api/instant-game/create-event/",
         {
@@ -67,7 +72,18 @@ class TemplateList extends React.Component {
         }
       )
         .then(res => res.json())
-        .then(res => console.log(res));
+        .then(res => {
+          fetch(
+            `https://food-society.herokuapp.com/api/instant-game/set-exit-status/`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              },
+              body: JSON.stringify(exitData)
+            }
+          );
+        });
     }
   };
 
