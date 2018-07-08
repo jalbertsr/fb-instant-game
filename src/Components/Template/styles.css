@@ -29,6 +29,15 @@ box-shadow: 1px 3px 18px -3px;
     align-items: center;
 }
 
+.wrapper_input_time {
+  display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    font-size: 1.2em;
+    align-items: center;
+    flex-direction: column;
+}
+
 .button > button {
   background-color: white;
   font-size: 2em;

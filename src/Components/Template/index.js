@@ -18,7 +18,8 @@ class Template extends React.Component {
       time: "",
       edit: false,
       question: "When is it happening?"
-    }
+    },
+    public: false
   };
 
   handleChanges = e => {
@@ -27,10 +28,19 @@ class Template extends React.Component {
     });
   };
 
+  handleChangesPublic = e => {
+    this.setState(prevState => {
+      return {
+        public: !prevState.public
+      }
+    });
+  };
+
   handleSubmit = () => {
     this.props.history.push({
       pathname: "/template-list",
       state: {
+        public: this.state.public,
         name: this.state.name,
         time: this.state.time,
         userData: this.props.history.location.state.userData
@@ -77,7 +87,7 @@ class Template extends React.Component {
       );
     } else {
       return (
-        <div className={styles.wrapper_input}>
+        <div className={styles.wrapper_input_time}>
         <div className={styles.time}>
           <TextField
             id="datetime-local"
@@ -105,7 +115,12 @@ class Template extends React.Component {
               }
             })}
             >
+              ⬅
             </button>
+          </div>
+          <div>
+            <input type="checkbox" id="sth" name="public" value={this.state.public} onChange={this.handleChangesPublic}/>
+            <label for="sth">Public?</label>
           </div>
           <div className={styles.button_create}>
             <button onClick={this.handleSubmit}>Create</button>
