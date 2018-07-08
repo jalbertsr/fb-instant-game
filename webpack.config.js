@@ -2,6 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin")
+
 const cssModules =
   "modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]";
 module.exports = {
@@ -47,6 +49,13 @@ module.exports = {
       favicon: "./assets/favicon.ico"
     }),
     new ExtractTextPlugin("style.css", { allChunks: true }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new GoogleFontsPlugin({
+      fonts: [
+        { family: "Play" },
+        { family: "Lobster" },
+        { family: "Josefin Slab" }
+      ]
+    })
   ]
 };

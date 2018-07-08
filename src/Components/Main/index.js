@@ -72,6 +72,9 @@ class Main extends Component {
     const { nextEventDate, nextEventName, status } = this.state;
     return (
       <div className={styles.container}>
+        <div className={styles.app_name}>
+          Food society
+        </div>
         <div className={styles.container_card}>
           <div style={{ fontSize: "1.8em" }}>{nextEventName}</div>
           <div className={styles.card_time}>
@@ -91,16 +94,16 @@ class Main extends Component {
                 })
               }
             >
-              {status ? "Confirmed" : "Attend"}
+              {status ? "Confirmed👏" : "Attend👍"}
             </button>
             <button
               className={
                 status === false ? `button-primary ${styles.redBorder}` : ""
               }
-              style={{ fontSize: "1.05em", padding: "0 10px" }}
+              style={{ fontSize: "1.05em", padding: "0 10px", "background": "rgba(255,255,255, 0.7)"}}
               onClick={() => this.handleRejectButton()}
             >
-              {status === false ? "Not going" : "Not Attend"}
+              {status === false ? "Not going" : "I'll pass🙅"}
             </button>
           </div>
         </div>

@@ -1,0 +1,44 @@
+/* === Josefin Slab - regular */
+@font-face {
+	font-family: 'Josefin Slab';
+	font-style: normal;
+	font-weight: 400;
+	src: url("./font/JosefinSlab-Regular.eot");
+	src: local("Josefin Slab Regular"),
+		local("JosefinSlab-Regular"),
+		url("./font/JosefinSlab-Regular.eot") format("embedded-opentype"),
+		url("./font/JosefinSlab-Regular.woff2") format("woff2"),
+		url("./font/JosefinSlab-Regular.woff") format("woff"),
+		url("./font/JosefinSlab-Regular.ttf") format("truetype"),
+		url("./font/JosefinSlab-Regular.svg") format("svg");
+}
+
+/* === Lobster - regular */
+@font-face {
+	font-family: 'Lobster';
+	font-style: normal;
+	font-weight: 400;
+	src: url("./font/Lobster-Regular.eot");
+	src: local("Lobster Regular"),
+		local("Lobster-Regular"),
+		url("./font/Lobster-Regular.eot") format("embedded-opentype"),
+		url("./font/Lobster-Regular.woff2") format("woff2"),
+		url("./font/Lobster-Regular.woff") format("woff"),
+		url("./font/Lobster-Regular.ttf") format("truetype"),
+		url("./font/Lobster-Regular.svg") format("svg");
+}
+
+/* === Play - regular */
+@font-face {
+	font-family: 'Play';
+	font-style: normal;
+	font-weight: 400;
+	src: url("./font/Play-Regular.eot");
+	src: local("Play Regular"),
+		local("Play-Regular"),
+		url("./font/Play-Regular.eot") format("embedded-opentype"),
+		url("./font/Play-Regular.woff2") format("woff2"),
+		url("./font/Play-Regular.woff") format("woff"),
+		url("./font/Play-Regular.ttf") format("truetype"),
+		url("./font/Play-Regular.svg") format("svg");
+}
