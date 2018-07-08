@@ -54,7 +54,8 @@ npm manifest:
       "react": "^16.4.1",
       "react-content-loader": "^3.1.2",
       "react-dom": "^16.4.1",
-      "react-router-dom": "^4.3.1"
+      "react-router-dom": "^4.3.1",
+      "@material_ui/core": "^1.3.0"
     }
   }
 
