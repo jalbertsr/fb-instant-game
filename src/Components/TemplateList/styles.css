@@ -1,0 +1,75 @@
+.wrapper {
+  height: 100vh;
+  background-color: #00CFD8;
+}
+
+input[type="number"] {
+  width: 21vw;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 2.7em;
+  align-self: center;
+}
+
+.time {
+  align-self: center;
+  font-size: 1.3em;
+}
+
+.list {
+  display: flex;
+  height: 65vh;
+overflow: scroll;
+flex-direction: column;
+}
+
+.addItem {
+  display: flex;
+justify-content: space-around;
+margin-top: 2vh;
+}
+
+.button_add > button {
+  background-color: white;
+text-align: center;
+font-size: 1.4em;
+padding: 0;
+width: 12vw;
+text-align: center;
+}
+
+.input_name {
+  font-size: 1.4em;
+}
+
+.list_item {
+  display: flex;
+    background-color: white;
+    width: 100vw;
+    height: 7vh;
+    justify-content: space-evenly;
+    font-size: 2em;
+    box-shadow: 1px 1px 1px 1px;
+    margin-top: 2vh;
+    flex-shrink: 0;
+}
+
+.button_submit > button {
+  align-self: center;
+  align-items: center;
+  font-size: 1.4em;
+  box-shadow: 1px 1px 1px -1px;
+  background-color: white;
+}
+
+.button_submit {
+  text-align: center;
+}
