@@ -66,7 +66,28 @@ class Main extends Component {
     return events;
   };
 
-  handleRejectButton = () => {};
+  handleRejectButton = () => {
+    const { group_id, user_id } = this.userData;
+
+    const data = {
+      group_id,
+      user_id,
+      user_attendance: false
+    };
+
+    fetch(`https://food-society.herokuapp.com/api/instant-game/update-status/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ status: false })
+      })
+      .catch(error => console.error(`Fetch Error =\n`, error));
+  };
 
   render() {
     const { nextEventDate, nextEventName, status } = this.state;

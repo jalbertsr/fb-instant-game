@@ -4,7 +4,6 @@ window.onload = function() {
     console.log("Loading...");
 
     FBInstant.startGameAsync().then(function() {
-      console.log("wwwwww");
       var contextId = FBInstant.context.getID();
       var contextType = FBInstant.context.getType();
 
@@ -22,10 +21,6 @@ window.onload = function() {
           body: JSON.stringify({ group_id: contextId, user_id: playerId })
         }
       );
-
-      console.log("contextId", contextId);
-      console.log("contextType", contextType);
-      console.log("playerId", playerId);
 
       game.start();
     });
