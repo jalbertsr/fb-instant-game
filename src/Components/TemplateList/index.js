@@ -47,7 +47,7 @@ class TemplateList extends React.Component {
   };
 
   handleSumbit = () => {
-    const { userData, name, time, public } = this.props.history.location.state;
+    const { userData, name, time} = this.props.history.location.state;
     if (this.state.list.length > 0) {
       const data = {
         user_id: userData.user_id,
@@ -55,7 +55,7 @@ class TemplateList extends React.Component {
         event_name: name,
         event_date: time,
         products: this.state.list,
-        is_public: public
+        is_public: this.props.history.location.state.public
       };
       const exitData = {
         user_id: userData.user_id,
