@@ -156,7 +156,7 @@ class UploadList extends React.Component {
         <div className={styles.food_list}>{this.renderFoodList()}</div>
         <button
           onClick={this.handleSumbit}
-          style={{ backgroundColor: "white" }}
+          className={styles.button_confirm}
         >
           Confirm
         </button>

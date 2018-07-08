@@ -1,12 +1,12 @@
 .container {
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   text-overflow: ellipsis;
   justify-content: space-evenly;
   background-color: #D9F4F3;
-  margin-top: -14vh;
+  margin-top: 8vh;
 
   /* list
   margin-top: 2vh;
@@ -53,8 +53,14 @@
 }
 
 .app_name {
-  font-family: 'Josefin Slab', serif;
-  font-size: 3.7em;
+  font-family: 'Audiowide', cursive;
+  font-size: 2.7em;
+  width: 100vw;
+  text-align: center;
+  background-color: white;
+  border: solid 2px darkgray;
+  color: #545454;
+  box-shadow: -5px 2px 18px -7px black
 }
 
 @media (min-width: 400px) {
