@@ -26,23 +26,22 @@ class UploadList extends React.Component {
       };
     });
 
+    const { group_id, user_id } = this.props.history.location.userData;
+
     const data = {
+      group_id,
+      user_id,
       products,
       user_attendance: true
     };
 
-    const { group_id, user_id } = this.props.history.location.userData;
-
-    fetch(
-      `https://food-society.herokuapp.com/api/instant-game/set-status/${group_id}/${user_id}/`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        body: JSON.stringify(data)
-      }
-    )
+    fetch(`https://food-society.herokuapp.com/api/instant-game/update-status/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify(data)
+    })
       .then(res => res.json())
       .then(res => {
         if (res.status === "ok") {
@@ -154,10 +153,7 @@ class UploadList extends React.Component {
           <div>Items required</div>
         </div>
         <div className={styles.food_list}>{this.renderFoodList()}</div>
-        <button
-          onClick={this.handleSumbit}
-          className={styles.button_confirm}
-        >
+        <button onClick={this.handleSumbit} className={styles.button_confirm}>
           Confirm
         </button>
       </div>

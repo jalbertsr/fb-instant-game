@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --progress --hot --inline --colors --watch",
     "create": "webpack --config webpack.config.js",
     "build": "webpack -p",
-    "upload": "chmod +x ./upload.sh"
+    "upload": "./upload.sh"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

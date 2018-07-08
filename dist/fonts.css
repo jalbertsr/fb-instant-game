@@ -1,3 +1,18 @@
+/* === Audiowide - regular */
+@font-face {
+	font-family: 'Audiowide';
+	font-style: normal;
+	font-weight: 400;
+	src: url("./font/Audiowide-Regular.eot");
+	src: local("Audiowide Regular"),
+		local("Audiowide-Regular"),
+		url("./font/Audiowide-Regular.eot") format("embedded-opentype"),
+		url("./font/Audiowide-Regular.woff2") format("woff2"),
+		url("./font/Audiowide-Regular.woff") format("woff"),
+		url("./font/Audiowide-Regular.ttf") format("truetype"),
+		url("./font/Audiowide-Regular.svg") format("svg");
+}
+
 /* === Josefin Slab - regular */
 @font-face {
 	font-family: 'Josefin Slab';
