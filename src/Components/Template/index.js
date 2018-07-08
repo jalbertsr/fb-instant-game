@@ -13,7 +13,7 @@ class Template extends React.Component {
       edit: true,
       question: "How do you want to call it?"
     },
-    time: moment().format(),
+    time: moment().format('YYYY-MM-DDTHH:mm'),
     eventTime: {
       time: "",
       edit: false,
@@ -78,36 +78,33 @@ class Template extends React.Component {
     } else {
       return (
         <div className={styles.wrapper_input}>
-          <div className={styles.time}>
-            <TextField
-              id="datetime-local"
-              type="datetime-local"
-              defaultValue="2017-05-24T10:30"
-              onChange={this.handleChanges}
-              name="time"
-            />
-          </div>
-          <div className={styles.button}>
-            <button
-              onClick={() =>
-                this.setState(prevState => {
-                  return {
-                    eventName: {
-                      name: "",
-                      placeholder: "Create your food event",
-                      edit: true,
-                      question: "How do you want to call it?"
-                    },
-                    eventTime: {
-                      time: "",
-                      edit: false,
-                      question: "When is it happening?"
-                    }
-                  };
-                })
+        <div className={styles.time}>
+          <TextField
+            id="datetime-local"
+            type="datetime-local"
+            defaultValue={this.state.time}
+            onChange={this.handleChanges}
+            name='time'
+          />
+        </div>
+        <div className={styles.button}>
+          <button
+            onClick={() => this.setState((prevState) => {
+              return {
+                eventName: {
+                  name: '',
+                  placeholder: 'Create your food event',
+                  edit: true,
+                  question: 'How do you want to call it?'
+                },
+                eventTime: {
+                  time: '',
+                  edit: false,
+                  question: 'When is it happening?'
+                }
               }
             >
-              ⬅
+              <i class="fas fa-arrow-left"></i>
             </button>
           </div>
           <div className={styles.button_create}>
