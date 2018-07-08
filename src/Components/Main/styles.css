@@ -6,7 +6,7 @@
   text-overflow: ellipsis;
   justify-content: space-evenly;
   background-color: #D9F4F3;
-  margin-top: 8vh;
+  background-color: rgba(250, 234, 31, 0.8)
 
   /* list
   margin-top: 2vh;
@@ -32,6 +32,7 @@
   justify-content: space-evenly;
   background: linear-gradient(110deg, white 60%, #00CFD8 60%);
   box-shadow: -1vh 1vh 6vh -2vh black;
+  margin-top: 6vh;
 
   /* no-list */
   background-color: white;
