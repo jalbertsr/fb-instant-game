@@ -103,8 +103,8 @@ class Template extends React.Component {
                   question: 'When is it happening?'
                 }
               }
+            })}
             >
-              <i class="fas fa-arrow-left"></i>
             </button>
           </div>
           <div className={styles.button_create}>
