@@ -48,13 +48,15 @@ class Main extends Component {
                 nextEventDate: res.next_event_timestamp,
                 status: res.user_attendance,
                 groupName: res.group_name
-              });
+              })
             })
             .catch(err => {
-              //REDIRCET ADMIN
-              console.log(err);
+              this.props.history.push({
+                pathname: '/template',
+                state: { userData: res }
+              })
             })
-        });
+          })
     }, 2000);
   }
 

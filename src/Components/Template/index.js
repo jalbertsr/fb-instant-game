@@ -1,41 +1,42 @@
-import React from 'react';
-import styles from './styles.css';
-import moment from 'moment';
-import TextField from '@material-ui/core/TextField';
+import React from "react";
+import styles from "./styles.css";
+import moment from "moment";
+import { withRouter } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
 
 class Template extends React.Component {
-
   state = {
-    name: '',
+    name: "",
     eventName: {
-      name: '',
-      placeholder: 'Create your food event',
+      name: "",
+      placeholder: "Create your food event",
       edit: true,
-      question: 'how do you want to call it?'
+      question: "How do you want to call it?"
     },
     time: moment().format('YYYY-MM-DDTHH:mm'),
     eventTime: {
-      time: '',
+      time: "",
       edit: false,
-      question: 'When is it happening?'
+      question: "When is it happening?"
     }
-  }
+  };
 
-  handleChanges = (e) => {
+  handleChanges = e => {
     this.setState({
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
-  handleSubmit =() => {
+  handleSubmit = () => {
     this.props.history.push({
-      pathname: '/template-list',
+      pathname: "/template-list",
       state: {
         name: this.state.name,
-        time: this.state.time
+        time: this.state.time,
+        userData: this.props.history.location.state.userData
       }
-    })
-  }
+    });
+  };
 
   renderInput = () => {
     if (this.state.eventName.edit) {
@@ -43,37 +44,37 @@ class Template extends React.Component {
         <div className={styles.wrapper_input}>
           <div className={styles.input_name}>
             <input
-              type='text'
+              type="text"
               onChange={this.handleChanges}
-              name='name'
+              name="name"
               value={this.state.name}
-              >
-              </input>
-            </div>
-            <div className={styles.button}>
-              <button
-                onClick={() => this.setState((prevState) => {
+            />
+          </div>
+          <div className={styles.button}>
+            <button
+              onClick={() =>
+                this.setState(prevState => {
                   return {
                     eventName: {
-                      name: '',
-                      placeholder: 'Create your food event',
+                      name: "",
+                      placeholder: "Create your food event",
                       edit: false,
-                      question: 'how do you want to call it?'
+                      question: "how do you want to call it?"
                     },
                     eventTime: {
-                      time: '',
+                      time: "",
                       edit: true,
-                      question: 'When is it happening?'
+                      question: "When is it happening?"
                     }
-                  }
-                })}
-                >
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-              </div>
-
+                  };
+                })
+              }
+            >
+              ➡
+            </button>
+          </div>
         </div>
-      )
+      );
     } else {
       return (
         <div className={styles.wrapper_input}>
@@ -102,37 +103,35 @@ class Template extends React.Component {
                   question: 'When is it happening?'
                 }
               }
-            })}
             >
               <i class="fas fa-arrow-left"></i>
             </button>
           </div>
           <div className={styles.button_create}>
-            <button
-              onClick={this.handleSubmit}
-              >
-                Create
-              </button>
-            </div>
-
-      </div>
-      )
+            <button onClick={this.handleSubmit}>Create</button>
+          </div>
+        </div>
+      );
     }
-  }
+  };
 
-  render () {
+  render() {
     return (
       <div className={styles.wrapper}>
         <div className={styles.title}>
-          {this.state.eventName.edit ? this.state.eventName.placeholder : this.state.name}
+          {this.state.eventName.edit
+            ? this.state.eventName.placeholder
+            : this.state.name}
         </div>
         <div className={styles.wrapper_question}>
-          {this.state.eventName.edit ? this.state.eventName.question : this.state.eventTime.question}
+          {this.state.eventName.edit
+            ? this.state.eventName.question
+            : this.state.eventTime.question}
         </div>
         {this.renderInput()}
       </div>
-    )
+    );
   }
 }
 
-export default Template;
+export default withRouter(Template);

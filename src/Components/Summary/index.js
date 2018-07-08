@@ -10,7 +10,6 @@ class Summary extends React.Component {
 
   componentDidMount() {
     const { products, time } = this.props.location.state;
-    console.log(products, time);
     this.setState({ products, time });
   }
 
