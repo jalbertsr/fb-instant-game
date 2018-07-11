@@ -103,16 +103,17 @@ class Main extends Component {
     const { nextEventDate, status, groupName } = this.state;
     return (
       <div className={styles.container}>
-        <div className={styles.app_name}>Food society</div>
         <div className={styles.container_card}>
-          {nextEventDate && groupName ?
-          <React.Fragment>
+          {/* {nextEventDate && groupName ?
+          <React.Fragment> */}
             <div style={{ fontSize: "1.8em" }}>{groupName}</div>
+              <img className={styles.main_image} alt='food' src='https://images.unsplash.com/photo-1459314079206-9970f36c7784?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=29c98f7a81a12658017b7ff79c11f23b&auto=format&fit=crop&w=1050&q=80'>
+              </img>
             <div className={styles.card_time}>
               <div>{moment(nextEventDate).format("MMMM Do")}</div>
               <div>{moment(nextEventDate).format("hA")}</div>
             </div>
-          </React.Fragment> : <MainLoader/>}
+          {/* </React.Fragment> : <MainLoader/>} */}
           <div className={styles.buttons}>
             <button
               className={
@@ -143,19 +144,6 @@ class Main extends Component {
             </button>
           </div>
         </div>
-        {this.state.listHere && (
-          <div className={styles.container_list}>
-            <table className="u-full-width" style={{ width: "86vw" }}>
-              <thead>
-                <tr>
-                  <th>Event</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>{this.renderList()}</tbody>
-            </table>
-          </div>
-        )}
       </div>
     );
   }

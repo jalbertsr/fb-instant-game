@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.css";
 import moment from "moment";
 import { withRouter } from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
 
 class Template extends React.Component {
   state = {
@@ -89,7 +88,7 @@ class Template extends React.Component {
       return (
         <div className={styles.wrapper_input_time}>
         <div className={styles.time}>
-          <TextField
+          <input
             id="datetime-local"
             type="datetime-local"
             defaultValue={this.state.time}

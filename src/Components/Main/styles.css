@@ -1,16 +1,10 @@
 .container {
   height: 100vh;
   display: flex;
-  flex-direction: column-reverse;
   align-items: center;
   text-overflow: ellipsis;
   justify-content: space-evenly;
-  background-color: #D9F4F3;
-  background-color: rgba(250, 234, 31, 0.8)
-
-  /* list
-  margin-top: 2vh;
-  justify-content: flex-start; */
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F9FF 100%);
 }
 
 .greenBorder {
@@ -23,20 +17,20 @@
   border-width: 2px;
 }
 
+img {
+  height: 28vh;
+  width: 86vw;
+}
+
 .container_card {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 74vw;
   align-items: center;
-  height: 30vh;
-  justify-content: space-evenly;
-  background: linear-gradient(110deg, white 60%, #00CFD8 60%);
-  box-shadow: -1vh 1vh 6vh -2vh black;
-  margin-top: 6vh;
-
-  /* no-list */
+  height: 66vh;
+  justify-content: space-between;
   background-color: white;
-  box-shadow: 1px 1px 14px 1px lightgrey;
+  box-shadow: 1px 1px 14px 1px
 }
 
 .card_time {
