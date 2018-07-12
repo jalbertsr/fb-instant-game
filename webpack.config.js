@@ -52,10 +52,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new GoogleFontsPlugin({
       fonts: [
-        { family: "Play" },
-        { family: "Lobster" },
-        { family: "Josefin Slab" },
-        { family: "Audiowide"}
+        { family: "Roboto" }
       ]
     })
   ]

@@ -7,19 +7,17 @@
   background: linear-gradient(180deg, #FFFFFF 0%, #F1F9FF 100%);
 }
 
-.greenBorder {
-  border-color: green;
-  background-color: rgba(96, 207, 46, 0.3);
+.title {
+  font-size: 1.9em;
+  font-weight: bold;
+  margin-top: 3vh;
 }
 
-.redBorder {
-  border-color: red;
-  border-width: 2px;
-}
 
 img {
   height: 28vh;
   width: 86vw;
+  border-radius: 2vh;
 }
 
 .container_card {
@@ -30,29 +28,48 @@ img {
   height: 66vh;
   justify-content: space-between;
   background-color: white;
-  box-shadow: 1px 1px 14px 1px
+  box-shadow: 1px 1px 14px 1px darkgray;
 }
 
 .card_time {
   display: flex;
-  justify-content: space-around;
-  font-size: 1.3em;
-  width: 70vw;
-}
-
-.buttons {
-  display: flex;
+  flex-direction: column;
+  height: 16vh;
   justify-content: space-evenly;
-  width: 80vw;
 }
 
-.app_name {
-  font-family: 'Audiowide', cursive;
-  font-size: 2.7em;
-  width: 100vw;
-  text-align: center;
-  background-color: white;
-  border: solid 2px darkgray;
-  color: #545454;
-  box-shadow: -5px 2px 18px -7px black
+.date {
+  font-size: 2.3em;
+}
+
+.time {
+  align-self: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.button_green {
+  font-size: 1.5em;
+  border: none;
+  background-color: #25DE90;
+  height: 7vh;
+  border-radius: 0;
+  width: 37vw;
+  color: white;
+  text-transform: none;
+  box-shadow: -2px 4px 12px -2px #25DE90;
+  margin: 0;
+}
+
+.button_red {
+  font-size: 1.5em;
+  border: none;
+  background-color: #F3522B;
+  height: 7vh;
+  border-radius: 0;
+  width: 37vw;
+  color: white;
+  text-transform: none;
+  box-shadow: 2px 4px 12px -2px #F3522B;
+  margin: 0;
 }
